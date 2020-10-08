@@ -4,6 +4,25 @@ const express = require('express')
 // create express server
 const app = express()
 
+// render function
+
+function render(movieId) {
+    const ToyStory = 
+`<html>
+<head>
+    <title>This is my fabulous test page</title>
+</head>
+<body style="background-color: green;">
+    <div>
+        <h1>Toy Story - ${movieId} </h1>
+        <p>ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo illum rerum tempore ut delectus, nemo nesciunt numquam doloribus, eius, quasi esse assumenda quibusdam? Illum repellendus beatae saepe nobis, error possimus!</p>
+    </div>
+</body>
+</html>`;
+
+    return ToyStory;
+}
+
 // register GET /movie endpoint
 app.get(
   '/user/:movieId', // declares a parameter named title
@@ -13,7 +32,8 @@ app.get(
 //switch case to select the right movie
     switch(movieId){
         case 'tt0114709':
-        res.send(`this is the movie page of Toy Story`);
+        let page = render(movieId);
+        res.send(page);
         break;
         case 'tt0114710':
         res.send(`this is the movie page of scary movie`);
