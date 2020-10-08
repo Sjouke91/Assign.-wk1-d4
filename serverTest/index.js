@@ -9,7 +9,20 @@ app.get(
   '/user/:movieId', // declares a parameter named title
   (req, res) => { 
     const movieId = req.params.movieId;
-    res.send(`this movieId: ${movieId} corresponds with scary movie`)
+
+//switch case to select the right movie
+    switch(movieId){
+        case 'tt0114709':
+        res.send(`this is the movie page of Toy Story`);
+        break;
+        case 'tt0114710':
+        res.send(`this is the movie page of scary movie`);
+        break;
+        default:
+        res.send(`movie not found`);
+        break;
+    }
+    
   }
 )
 
@@ -17,12 +30,8 @@ app.get(
 const port = 3000
 
 // start listening
-app.listen(
-  port,
-  () => console.log(`Listening on :${port}`)
+app.listen(port, () => console.log(`Listening on :${port}`)
 )
-
-
 
 // const express = require('express')
 // const app = express()
